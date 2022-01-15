@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Write a program that prints all prime numbers. (Note: if your programming language 
+        does not support arbitrary size numbers, printing all primes up to the largest number 
+        you can easily represent is fine too.)*/
+
+        function isComposite(number){
+            number = Number(number);
+            if(number === 2)
+            {
+                return false;
+            }    
+            if(!Number.isInteger(number) || number < 2){
+                return null;
+            };
+            let remainder;
+            let factor = 2;
+            do {
+                remainder = number % factor;
+                factor++;
+            } while (remainder !== 0 && factor <= Math.sqrt(number));
+            return remainder === 0;
+        }
+        let primesList = [];
+        let primeAmount = window.prompt("Número de primos:");
+        for (let i = 2; primeAmount > 0; i++) {
+            if(!isComposite(i))
+            {
+            primesList.push(i);
+            primeAmount--;
+            }          
+        }
+        window.alert(primesList);
+    </script>
+</body>
+</html>
